@@ -29,7 +29,7 @@ namespace MyDayWebApp.Controllers
         public IActionResult Index()
         {
             string jsonString = "";
-            string apiEndPoint = "http://localhost:17368/api/weather?zip={0}";
+            string apiEndPoint = "http://localhost:20208/api/weather?zip={0}";
             var currentUserID = User.Claims.ToList()[0].Value; // TODO: unsure if this is right, double check!
             var locations = _context.Location.ToList();
             var currentUserLocation = locations.SingleOrDefault(l => l.UserID == currentUserID).Zip;
