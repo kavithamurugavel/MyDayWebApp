@@ -1,0 +1,89 @@
+﻿/*-----------------------------------------------*/
+/* BASIC SETUP */
+/*-----------------------------------------------*/
+/*for all the elements*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*-----------------------------------------------*/
+/* HEADER */
+/*-----------------------------------------------*/
+
+h1, h2, h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h3 {
+    color: #fff;
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/*-----------------------------------------------*/
+/* NAVIGATION */
+/*-----------------------------------------------*/
+
+/* Main navigation*/
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 10px;
+}
+
+    /*styling of li inside main nav*/
+    .main-nav li {
+        display: inline-block;
+        margin-left: 40px;
+    }
+
+/*-----------------------------------------------*/
+/* WEATHER */
+/*-----------------------------------------------*/
+
+.section-weather {
+    /*linear gradient to improve contrast between image and text; rgba is for transparency*/
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../../images/MyDay/air-atmosphere-beautiful-216596.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../../images/MyDay/air-atmosphere-beautiful-216596.jpg);
+    background-size: cover; /*to position image correctly*/
+    background-position: center; /*to center the image*/
+    height: 100vh; /*100 % of the view port i.e. viewing area*/
+    background-attachment: fixed;
+    margin-bottom: 30px;
+}
+
+.centered {
+    position: absolute; /*to vertically and horizontally center it*/
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    /*translate the element half of its width and height, up and to the left*/
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}
+
+/*-----------------------------------------------*/
+/* REUSABLE COMPONENTS */
+/*-----------------------------------------------*/
+.row {
+    max-width: 1140px;
+    margin: 0 auto; /*top & bottom: 0; left & right: auto - for centering*/
+}
+
+.white-font {
+    color: #fff;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.left-align {
+    text-align: left;
+}

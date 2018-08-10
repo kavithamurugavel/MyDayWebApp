@@ -1,0 +1,52 @@
+﻿@model MyDayWebApp.DTOs.WeatherDTO
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/MyDay/MyDayStyle.css">
+    <link rel="stylesheet" type="text/css" href="~/css/MyDay/Vendors/grid.css">
+    <link href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="row">
+                <ul class="main-nav">
+                    <li><a href="#weather">Weather</a></li> <!--this anchors to the id=features part below-->
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#reminders">Reminders</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="section-weather" id="weather">
+        <div class="row centered">
+            <div class="col span-1-of-5 box">
+                <ion-icon name="thermometer" size="large" class="white-font"></ion-icon>
+                <h3>Current Temp</h3>
+                <p class="white-font">@Model.main.CalculateKtoCTemp(@Model.main.temp)</p>
+            </div>
+            <div class="col span-1-of-5 box">
+                <ion-icon name="sunny" size="large" class="white-font"></ion-icon>
+                <h3>Max Temp</h3>
+                <p class="white-font">@Model.main.CalculateKtoCTemp(@Model.main.temp)</p>
+            </div>
+            <div class="col span-1-of-5 box">
+                <ion-icon name="snow" size="large" class="white-font"></ion-icon>
+                <h3>Min Temp</h3>
+                <p class="white-font">@Model.main.CalculateKtoCTemp(@Model.main.temp)</p>
+            </div>
+            <div class="col span-1-of-5 box">
+                <ion-icon name="speedometer" size="large" class="white-font"></ion-icon>
+                <h3>Pressure</h3>
+                <p class="white-font">@Model.main.pressure</p>
+            </div>
+            <div class="col span-1-of-5 box">
+                <ion-icon name="water" size="large" class="white-font"></ion-icon>
+                <h3>Humidity</h3>
+                <p class="white-font">@Model.main.humidity</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
+</body>
