@@ -68,6 +68,19 @@ h3 {
     transform: translate(-50%, -50%)
 }
 
+.weather-unit {
+    float: right;
+    font-size: 180%;
+    padding-top: 20px;
+    padding-right: 50px;
+}
+
+.verticalLine {
+    padding-right: 10px;
+    padding-left: 10px;
+    border-left: medium solid #fff;
+}
+
 /*-----------------------------------------------*/
 /* REUSABLE COMPONENTS */
 /*-----------------------------------------------*/
