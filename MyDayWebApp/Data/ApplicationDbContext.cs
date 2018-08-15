@@ -5,12 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyDayWebApp.Models;
+using MyDayWebApp.Models.MyDay;
 using MyDayWebApp.Models.Settings;
 
 namespace MyDayWebApp.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        #region My Day Models
+
+        public DbSet<Reminder> Reminders { get; set; }
+        #endregion
+
         #region Settings Page Models
         public DbSet<Location> Location { get; set; }
         public DbSet<NewsTopics> NewsTopics { get; set; }

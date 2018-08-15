@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyDayWebApp.Data;
 using MyDayWebApp.DTOs;
+using MyDayWebApp.Models.MyDay;
+using MyDayWebApp.ViewModels;
 using Newtonsoft.Json;
 
 namespace MyDayWebApp.Controllers
@@ -45,7 +47,15 @@ namespace MyDayWebApp.Controllers
             }
 
             var weather = JsonConvert.DeserializeObject<WeatherDTO>(jsonString);
-            return View("Index", weather);
+
+            // TODO: separate the reminders part 
+            MyDayViewModel viewModel = new MyDayViewModel()
+            {
+                WeatherInfo = weather,
+                Reminders = new List<Reminder>()
+            };
+
+            return View("Index", viewModel);
         }
     }
 }

@@ -1,9 +1,29 @@
-﻿@model MyDayWebApp.DTOs.WeatherDTO
-@using System.IO
+﻿@using System.IO
+@model MyDayWebApp.ViewModels.MyDayViewModel
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!--Common markup between the Partial Views-->
+<header>
+    <nav>
+        <div class="row">
+            <ul class="main-nav">
+                <li><a href="#weather">Weather</a></li> <!--this anchors to the id=features part below-->
+                <li><a href="#news">News</a></li>
+                <li><a href="#reminders">Reminders</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/MyDay/MyDayStyle.css">
+    <link rel="stylesheet" type="text/css" href="~/css/MyDay/Vendors/grid.css">
+    <link href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css" rel="stylesheet">
+</head>
+
 @Html.Partial("_Weather")
+@Html.Partial("_Reminders")
