@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MyDayWebApp.Common;
 using MyDayWebApp.Data;
 using MyDayWebApp.DTOs;
 using MyDayWebApp.Models.MyDay;
@@ -17,10 +18,12 @@ namespace MyDayWebApp.Controllers
     public class MyDayController : Controller
     {
         private ApplicationDbContext _context;
+        ApiCall apiCall;
 
         public MyDayController(ApplicationDbContext context)
         {
             _context = context;
+            apiCall = new ApiCall();
         }
 
         protected override void Dispose(bool disposing)
@@ -30,21 +33,23 @@ namespace MyDayWebApp.Controllers
 
         public IActionResult Index()
         {
+            MyDayViewModel viewModel = GetWeather();
+
+            return View("Index", viewModel);
+        }
+
+        public MyDayViewModel GetWeather()
+        {
             string jsonString = "";
             string apiEndPoint = "http://localhost:20208/api/weather?zip={0}";
+           
             var currentUserID = User.Claims.ToList()[0].Value; // TODO: unsure if this is right, double check!
             var locations = _context.Location.ToList();
             var currentUserLocation = locations.SingleOrDefault(l => l.UserID == currentUserID).Zip;
 
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(string.Format(apiEndPoint, currentUserLocation));
-            webRequest.Method = "GET";
-            HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponseAsync().Result;
+            string apiString = string.Format(apiEndPoint, currentUserLocation);
 
-            using (Stream stream = webResponse.GetResponseStream())
-            {
-                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-                jsonString = reader.ReadToEnd();
-            }
+            jsonString = apiCall.GetJSONStringFromAPI(apiString);
 
             var weather = JsonConvert.DeserializeObject<WeatherDTO>(jsonString);
 
@@ -55,7 +60,7 @@ namespace MyDayWebApp.Controllers
                 Reminders = new List<Reminder>()
             };
 
-            return View("Index", viewModel);
+            return viewModel;
         }
     }
 }
